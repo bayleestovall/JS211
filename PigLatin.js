@@ -1,90 +1,69 @@
 'use strict';
 
-// brings in the assert module for unit testing
 const assert = require('assert');
-// brings in the readline module to access the command line
+
 const readline = require('readline');
-// use the readline module to print out to the command line
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
+const pigLatin = (word) => {
+  word = word.toLowerCase()
+  word = word.trim()
+  let splitUp = word.split('');
 
+  var vowels = ["a", "e", "i", "o", "u"]
 
-  const pigLatin = (word) => {
-      word = word.toLowerCase()
-      word = word.trim()
-      let splitUp = word.split('');
-      //console.log(splitUp)
-      
-    var vowels = ["a", "e", "i", "o", "u"]
-    
-    for (let i = 0; i <= splitUp.length; i++){
-      var currentLetter = splitUp[i]
-      
-    if (vowels.includes(currentLetter)){
-      //console.log('our vowel is', currentLetter ,'at position', [i])
+    var currentLetter = splitUp[i]
+
+    if (vowels.includes(currentLetter)) {
       let tempV = [i]
-      if (i <= 0){
-  
+      if (i <= 0) {
+
         splitUp.push('yay')
-        //console.log(splitUp)
-        
         let newString2 = splitUp.toString()
-        for(let w = 0; w <= splitUp.length; w++){
+        for (let w = 0; w <= splitUp.length; w++) {
           newString2 = newString2.replace(',', '')
         }
-        
-        return newString2
 
-        break
-       
-        } else {
-          for(let n = 0; n <= tempV - 1; n++){
+return newString2      
+
+      } else {
+        for (let n = 0; n <= tempV - 1; n++) {
           splitUp.push(splitUp[0])
-          splitUp.splice(0,1)
-        //console.log('our word is ', word ,' and our array is',splitUp)
+          splitUp.splice(0, 1)
         }
-  
+
         splitUp.push('ay')
         let newString = splitUp.toString()
-        
-        for(let j = 0; j <= splitUp.length; j++){
+
+        for (let j = 0; j <= splitUp.length; j++) {
           newString = newString.replace(',', '')
-          
+
         }
-        
+
         console.log(newString)
         return newString
 
-        break
-      
-        }
-        
       }
-       
-    
+
     }
-   
+
+
   }
 
+}
 
 
-
-// the first function called in the program to get an input from the user
-// to run the function use the command: node main.js
-// to close it ctrl + C
 const getPrompt = () => {
   rl.question('word ', (answer) => {
-    console.log( pigLatin(answer) );
+    console.log(pigLatin(answer));
     getPrompt();
   });
 }
 
-// Unit Tests
-// You use them run the command: npm test main.js
-// to close them ctrl + C
 if (typeof describe === 'function') {
 
   describe('#pigLatin()', () => {
