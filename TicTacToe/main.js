@@ -1,4 +1,4 @@
-  
+  //worked with others on discord :) 
 'use strict';
 
 // brings in the assert module for unit testing
@@ -84,12 +84,12 @@ if (board[row][column] == " "){
     playerTurn = "X"
   }
 } else {
-  console.log("** That space is taken, try again **");
+  console.log("Looks like this space is taken, try another!");
 }
 
   // then check for a win
   if (checkForWin() == true){
-    console.log("Congrats! " + playerTurn + "'s win!")
+    console.log("Game Over!" + playerTurn + "is the champion!")
   }
 }
 
